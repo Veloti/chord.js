@@ -1,0 +1,5 @@
+@import "~materialize-css/dist/css/materialize.min.css";
+
+.middle-gray {
+    background-color: rgb(150, 142, 133);
+}
