@@ -2,10 +2,9 @@ import React from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
 import {AboutPage} from './pages/AboutPage'
 import {SingInPage} from './pages/SignInPage'
-import {ChordPage} from './components/ChordPage'
 import {ChordPagesWrapper} from './components/ChordPagesWrapper'
 
-export const useRoutes = (isAuthenticated, chord) => {
+export const useRoutes = (isAuthenticated) => {
     console.log('useRoutes execution!!!!---!!!!')
     if (isAuthenticated) {
         return (
@@ -17,7 +16,7 @@ export const useRoutes = (isAuthenticated, chord) => {
                     <SingInPage/>
                 </Route>
                 <Route path='/:chord'>
-                    <ChordPagesWrapper chord2={chord}/>
+                    <ChordPagesWrapper/>
                 </Route>
                 <Redirect to='/'/>
             </Switch>

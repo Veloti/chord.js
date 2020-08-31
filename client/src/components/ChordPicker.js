@@ -1,9 +1,7 @@
 import React, {useContext, useState} from 'react'
-import {Link} from 'react-router-dom'
 import styled, {css} from 'styled-components'
 import {useChord} from '../hooks/chord.hook'
 import {SubChordGrid} from "./SubChordGrid";
-import {ChordButton} from "./ChordButton";
 import {ChordContext} from "../context/chord/chordContext";
 import {ChordGrid} from "./ChordGrid";
 
@@ -25,7 +23,7 @@ export const StyledLink = styled.div`
     `}
 `
 
-export const ChordPicker = ({ chordHandler }) => {
+export const ChordPicker = () => {
     const [chord, setChord] = useState('D')
     const {getChordString, subChordStringList, getSubChordString} = useChord(chord)
     const {chordStringList, setActiveChord} = useContext(ChordContext)

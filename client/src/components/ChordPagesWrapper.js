@@ -1,8 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react'
-import {ChordPage} from "./ChordPage";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import {AddChord} from "./AddChord";
 import {ChordContext} from "../context/chord/chordContext";
+import {ChordPageSwap} from './ChordPageSwap'
+
 
 const Border = styled.div`
     display: flex;
@@ -16,28 +17,9 @@ const Border = styled.div`
 
 export const ChordPagesWrapper = ({chord2}) => {
     const {majorNames, chordPages, focusElem, setFocusElem, addChordPage, activeChord} = useContext(ChordContext)
-    //const [focusElem, setFocusElem] = useState(null)
-    //const [chords, setChords] = useState(['C'])
-    const [random, setRandom] = useState(Math.random())
 
-    useEffect(() => {
-        console.log('activeChord-activeChord-activeChord')
-
-    },[activeChord])
-
-    // useEffect(() => {
-    //     const newChords = chordPages
-    //     newChords[focusElem] = chord2
-    //     addChordPage(chord2)
-    //     //setChords(newChords)
-    //     setRandom(Math.random())
-    // }, [chord2])
-
-    // const addChordHandler = chord => {
-    //     setChords(prev => [...prev, chord])
-    // }
     const chordList = chordPages.map( (item, index) => {
-        return (<ChordPage
+        return (<ChordPageSwap
                 chord={item}
                 key={index}
                 index={index}
@@ -47,10 +29,12 @@ export const ChordPagesWrapper = ({chord2}) => {
     })
     return (
         <>
-        <Border onClick={() => setFocusElem(null)}>
-            {chordList}
-            <AddChord onAdd={addChordPage} length={chordPages.length - 1}/>
-        </Border>
-            </>
+            <Border onClick={() => setFocusElem(null)}>
+                {chordList}
+                <AddChord onAdd={addChordPage} length={chordPages.length - 1}/>
+            </Border>
+        </>
     )
 }
+
+

@@ -1,8 +1,7 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 
-export const Navbar = () => {
-    return (
+export const Navbar = () => (
         <nav>
             <div className="nav-wrapper middle-gray" style={{ padding: '0 0'}}>
                 <NavLink to="/" className="brand-logo center">Chord.js</NavLink>
@@ -13,4 +12,3 @@ export const Navbar = () => {
             </div>
         </nav>
     )
-}

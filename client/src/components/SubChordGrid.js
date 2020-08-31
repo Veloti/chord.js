@@ -1,7 +1,6 @@
 import React from 'react'
-import {useChord} from '../hooks/chord.hook'
 import styled from 'styled-components'
-import {ChordButton} from "./ChordButton";
+import {ChordButton} from './ChordButton'
 
 const Wrapper = styled.div`
     display: flex;
