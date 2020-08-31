@@ -1,6 +1,5 @@
 import React from 'react'
 import {ChordButton} from "./ChordButton";
-import {useChord} from "../hooks/chord.hook";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -12,11 +11,7 @@ const Wrapper = styled.div`
     
 `
 
-export const ChordGrid = ({list, setActiveChord, setIsSubGridOpen, setChord}) => {
-    console.log('ChordGrid render')
-    const {getChordString} = useChord()
-
-    return (
+export const ChordGrid = ({list, setActiveChord, setIsSubGridOpen, setChord, getChordString}) => (
         <Wrapper>
             {list.map((chord, index) => {
                 return (
@@ -36,4 +31,4 @@ export const ChordGrid = ({list, setActiveChord, setIsSubGridOpen, setChord}) =>
             })}
         </Wrapper>
     )
-}
+

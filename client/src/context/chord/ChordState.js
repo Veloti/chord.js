@@ -8,7 +8,7 @@ import {
     SET_ACTIVE_CHORD
 } from "../types";
 
-const majorNames = ['C','C#','Db','D','D#','Eb','E','F','F#','Gb','G','G#','Ab','A','A#','Bb','B']
+const chordStringList = ['C','C#','Db','D','D#','Eb','E','F','F#','Gb','G','G#','Ab','A','A#','Bb','B']
 
 export const ChordState = ({children}) => {
     const initialState = {
@@ -36,7 +36,7 @@ export const ChordState = ({children}) => {
 
     return (
         <ChordContext.Provider value={{
-            majorNames, chordPages, activeChord, focusElem, setActiveChord,
+            chordStringList, chordPages, activeChord, focusElem, setActiveChord,
             setFocusElem, addChordPage
         }}>
             {children}

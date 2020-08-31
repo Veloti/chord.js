@@ -25,35 +25,30 @@ export const StyledLink = styled.div`
     `}
 `
 
-export const Wrapper = styled.div`
-    position: relative;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 1.5rem 1.5rem 0 1.5rem;
-    
-`
-
 export const ChordPicker = ({ chordHandler }) => {
-    const {majorNames, activeChord, setActiveChord} = useContext(ChordContext)
-    const {getChordString} = useChord()
-    const [isSubGridOpen, setIsSubGridOpen] = useState(false)
     const [chord, setChord] = useState('D')
+    const {getChordString, subChordStringList, getSubChordString} = useChord(chord)
+    const {chordStringList, setActiveChord} = useContext(ChordContext)
+
+    const [isSubGridOpen, setIsSubGridOpen] = useState(false)
 
     return (
         <>
             <ChordGrid
-                list={majorNames}
+                list={chordStringList}
                 setActiveChord={setActiveChord}
+                getChordString={getChordString}
                 setIsSubGridOpen={setIsSubGridOpen}
                 setChord={setChord}
             />
-                {isSubGridOpen
-                    ? <SubChordGrid
-                        chord={chord}
-                        chordHandler={chordHandler}
-                    />
-                    : null}
+            {isSubGridOpen
+                ? <SubChordGrid
+                    list={subChordStringList}
+                    setActiveChord={setActiveChord}
+                    getSubChordString={getSubChordString}
+                    chord={chord}
+                />
+                : null}
         </>
     )
 }

@@ -1,7 +1,4 @@
-import React, {useState} from 'react'
-//import {StyledLink} from './ChordPicker'
-//import {Wrapper} from './ChordPicker'
-import {Link} from 'react-router-dom'
+import React from 'react'
 import {useChord} from '../hooks/chord.hook'
 import styled from 'styled-components'
 import {ChordButton} from "./ChordButton";
@@ -13,14 +10,10 @@ const Wrapper = styled.div`
     padding: 0.5rem 1.5rem 0 1.5rem;
 `
 
-export const SubChordGrid = ({chord, chordHandler}) => {
-    const {getChordString, subChordStringList, getSubChordString} = useChord(chord)
-    //TODO: вынести обрабтотчик нажатия наверх
-
-    return (
+export const SubChordGrid = ({list, setActiveChord, getSubChordString}) => (
         <Wrapper>
             {
-                subChordStringList.map( (item, index) => {
+                list.map( (item, index) => {
                     return (
                         <ChordButton
                             to={`/${getSubChordString(item)}`}
@@ -29,7 +22,7 @@ export const SubChordGrid = ({chord, chordHandler}) => {
                             text={item.join('')}
                             major={false}
                             clickHandler={() => {
-                                chordHandler(item.join(''))
+                                setActiveChord(item.join(''))
                             }
                             }
                         />
@@ -38,4 +31,4 @@ export const SubChordGrid = ({chord, chordHandler}) => {
             }
         </Wrapper>
     )
-}
+
