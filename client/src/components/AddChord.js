@@ -17,15 +17,11 @@ const Wrapper = styled.div`
         `}
     `
 
-export const AddChord = ({onAdd, length}) => {
-    console.log('length', length)
-    return (
+export const AddChord = ({onAdd, length}) => (
         <Wrapper length={length} onClick={() => {
             onAdd('D')
-            console.log('click')
         }}>
             <h1 className='center'>+</h1>
         </Wrapper>
 
     )
-}

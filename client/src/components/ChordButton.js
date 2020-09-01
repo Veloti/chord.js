@@ -4,7 +4,7 @@ import styled from "styled-components";
 import {StyledLink} from './ChordPicker'
 
 
-export const ChordButton = ({item, to, text, clickHandler, major}) => {
+export const ChordButton = ({ to, text, clickHandler, major}) => {
     return (
         <Link to={to} onClick={clickHandler}>
             <StyledLink major={major}>

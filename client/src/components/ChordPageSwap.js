@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useCallback, useEffect, useMemo, useState} from "react";
 import styled, {css} from "styled-components";
 import ReactCardFlip from 'react-card-flip';
 
@@ -17,8 +17,15 @@ const Wrapper = styled.div`
     `}
 `
 
-export const ChordPageSwap = ({ chord, index, setFocus, isFocused}) => {
+export const ChordPageSwap = ({ chord, title, index, setFocus, isFocused, getChordInfo}) => {
     const [isFront, setIsFront] = useState(true)
+    // useEffect(() => {
+    //     useCallback(() => getChordInfo(chord), [chord])
+    // })
+    useEffect(() => {
+        getChordInfo(chord)
+    },[chord])
+    //useMemo(() => getChordInfo(chord), [chord])
     return (
         <Wrapper isFocused={isFocused}>
             <ReactCardFlip isFlipped={isFront} flipDirection="horizontal">
@@ -27,7 +34,6 @@ export const ChordPageSwap = ({ chord, index, setFocus, isFocused}) => {
                     onClick={event => {
                         event.stopPropagation()
                         setFocus(index)
-                        console.log('from page: ', chord)
                         }
                     }
                 >
@@ -35,6 +41,7 @@ export const ChordPageSwap = ({ chord, index, setFocus, isFocused}) => {
                         <a className="btn-flat disabled">Swap</a>
                     </div>
                     <h1 className='center'>{chord}</h1>
+                    <h3>{title}</h3>
                     <h2 className='center'>{'BACK'}</h2>
 
                 </div>
@@ -51,6 +58,7 @@ export const ChordPageSwap = ({ chord, index, setFocus, isFocused}) => {
                         <a className="btn-flat disabled">Swap</a>
                     </div>
                     <h1 className='center'>{chord}</h1>
+                    <h3>{title}</h3>
                     <h2 className='center'>{'FRONT'}</h2>
                 </div>
             </ReactCardFlip>

@@ -1,6 +1,6 @@
 import {
     ADD_CHORD_PAGE,
-    FOCUS_ELEM,
+    FOCUS_ELEM, GET_CHORD_INFO,
     REWRITE_CHORD_PAGE,
     SET_ACTIVE_CHORD
 } from "../types";
@@ -10,6 +10,7 @@ const handlers = {
     [SET_ACTIVE_CHORD]: (state, {payload}) => ({...state, activeChord: payload}),
     [ADD_CHORD_PAGE]: (state, {payload}) => ({...state, chordPages: [...state.chordPages, payload]}),
     [REWRITE_CHORD_PAGE]: (state, {payload}) => ({...state, chordPages: payload}),
+    [GET_CHORD_INFO]: (state, {payload}) => ({...state, chordsInfo: payload}),
     DEFAULT: state => state
 }
 

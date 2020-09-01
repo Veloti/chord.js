@@ -9,14 +9,14 @@ const Wrapper = styled.div`
     padding: 0.5rem 1.5rem 0 1.5rem;
 `
 
-export const SubChordGrid = ({list, setActiveChord, getSubChordString}) => (
+export const SubChordGrid = ({list, setActiveChord, getSubChordString}) => {
+    return (
         <Wrapper>
             {
-                list.map( (item, index) => {
+                list.map((item, index) => {
                     return (
                         <ChordButton
                             to={`/${getSubChordString(item)}`}
-                            item={item}
                             key={index}
                             text={item.join('')}
                             major={false}
@@ -25,9 +25,10 @@ export const SubChordGrid = ({list, setActiveChord, getSubChordString}) => (
                             }
                             }
                         />
-                        )
+                    )
                 })
             }
         </Wrapper>
     )
+}
 

@@ -16,15 +16,17 @@ const Border = styled.div`
 `
 
 export const ChordPagesWrapper = ({chord2}) => {
-    const {majorNames, chordPages, focusElem, setFocusElem, addChordPage, activeChord} = useContext(ChordContext)
+    const {majorNames, chordPages, focusElem, chordsInfo, setFocusElem, addChordPage, activeChord, getChordInfo} = useContext(ChordContext)
 
     const chordList = chordPages.map( (item, index) => {
         return (<ChordPageSwap
                 chord={item}
+                title={chordsInfo[item]?.title || 'null title'}
                 key={index}
                 index={index}
                 setFocus={setFocusElem}
                 isFocused={(index === focusElem)}
+                getChordInfo={getChordInfo}
             />)
     })
     return (
