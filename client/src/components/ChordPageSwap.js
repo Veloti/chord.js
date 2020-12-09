@@ -9,6 +9,7 @@ const Wrapper = styled.div`
     border-radius: 10px;
     min-width: 45%;
     cursor: pointer;
+    overflow: hidden;
     &:hover {
     box-shadow: 0 0 10px gray;
     }
@@ -27,6 +28,7 @@ export const ChordPageSwap = ({ chord, title, index, setFocus, isFocused, getCho
     },[chord])
     //useMemo(() => getChordInfo(chord), [chord])
     return (
+        <>
         <Wrapper isFocused={isFocused}>
             <ReactCardFlip isFlipped={isFront} flipDirection="horizontal">
                 <div
@@ -34,11 +36,16 @@ export const ChordPageSwap = ({ chord, title, index, setFocus, isFocused, getCho
                     onClick={event => {
                         event.stopPropagation()
                         setFocus(index)
-                        }
+                    }
                     }
                 >
-                    <div onClick={() => setIsFront(!isFront)}>
-                        <a className="btn-flat disabled">Swap</a>
+                    <div style={{display: 'flex', width: '200px'}}>
+                        <div style={{display: 'inline-block'}}>
+                            <i className="medium material-icons">close</i>
+                        </div>
+                        <div onClick={() => setIsFront(!isFront)} style={{display: 'inline-block'}}>
+                            <i className="medium material-icons">replay</i>
+                        </div>
                     </div>
                     <h1 className='center'>{chord}</h1>
                     <h3>{title}</h3>
@@ -51,18 +58,25 @@ export const ChordPageSwap = ({ chord, title, index, setFocus, isFocused, getCho
                         event.stopPropagation()
                         setFocus(index)
                         console.log('from page: ', chord)
-                        }
                     }
-                    >
-                    <div onClick={() => setIsFront(!isFront)}>
-                        <a className="btn-flat disabled">Swap</a>
+                    }
+                >
+                    <div style={{display: 'flex', justifyContent: 'space-between', width: '100%'}}>
+                        <div style={{display: 'inline-block'}}>
+                            <i className="medium material-icons">close</i>
+                        </div>
+                        <div onClick={() => setIsFront(!isFront)} style={{display: 'inline-block'}}>
+                            <i className="medium material-icons">replay</i>
+                        </div>
                     </div>
+
                     <h1 className='center'>{chord}</h1>
                     <h3>{title}</h3>
                     <h2 className='center'>{'FRONT'}</h2>
                 </div>
             </ReactCardFlip>
         </Wrapper>
+        </>
 
     )
 }
